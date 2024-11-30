@@ -8,4 +8,13 @@ function install_package_manager() {
   fi
 }
 
+function install_automation_engine() {
+  if ! command -v ansible > /dev/null; then
+    brew install ansible
+  else
+    echo "Automation engine already installed. Skipping..."
+  fi
+}
+
 install_package_manager
+install_automation_engine
