@@ -18,3 +18,4 @@ function install_automation_engine() {
 
 install_package_manager
 install_automation_engine
+ansible-playbook automation-engine/init.yaml

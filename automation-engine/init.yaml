@@ -1,0 +1,4 @@
+- name: Initial setup for my computer
+  hosts: localhost
+  tasks:
+    - include_tasks: tasks/stow.yaml
