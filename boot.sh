@@ -24,19 +24,26 @@ function detect_linux_distro() {
   echo "ubuntu"
 }
 
-function clone_setup_repo() {  
-  setup_folder="$HOME/.local/share/setup-my-computer"
+function clone_setup_repo() {
   echo "Cloning setup-my-computer..."
+  setup_folder="$HOME/.local/share/setup-my-computer"
+  current_dir="$(pwd)"
+
+  if [ "$current_dir" = "$setup_folder" ]; then
+    cd ~
+  fi
+
   rm -rf "$setup_folder"
+
   git clone https://github.com/leonardorodriguesf/setup-my-computer.git "$setup_folder"
+
+  cd "$current_dir"
 }
 
 function install_macos() {
   if command -v brew > /dev/null; then
     echo "Homebrew is already installed."
-
-  # Brew is installed but binary path not in $PATH
-  else if [ -f /opt/homebrew/bin/brew ]; then
+  elif [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
