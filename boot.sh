@@ -34,6 +34,10 @@ function clone_setup_repo() {
 function install_macos() {
   if command -v brew > /dev/null; then
     echo "Homebrew is already installed."
+
+  # Brew is installed but binary path not in $PATH
+  else if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
