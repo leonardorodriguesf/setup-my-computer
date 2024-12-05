@@ -2,7 +2,7 @@
 
 set -e
 
-dependencies=("git" "python3")
+dependencies=("git")
 start_new_session=false
 
 function detect_linux_distro() {
