@@ -1,0 +1,11 @@
+- name: "Configure persistent key storage on macOS"
+  when: ansible_os_family == "Darwin"
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/config"
+    state: present
+    create: yes
+    line: |
+      Host *
+        UseKeychain yes
+        AddKeysToAgent yes
+        IdentityFile {{ dest_key }}

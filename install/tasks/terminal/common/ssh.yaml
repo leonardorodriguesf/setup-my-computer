@@ -3,13 +3,28 @@
     state: "directory"
     path: "{{ lookup('env', 'HOME') }}/.ssh"
     mode: 0700
-- name: "Install private ssh key"
+- name: "Install private SSH key"
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
     mode: 0600
-- name: "Install public ssh key"
+- name: "Install public SSH key"
   copy:
     src: "{{ source_key }}.pub"
     dest: "{{ dest_key }}.pub"
     mode: 0644
+- name: "Ensure SSH agent is running"
+  shell: |
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+      echo "Starting ssh-agent"
+      eval "$(ssh-agent -s)"
+    fi
+- pause:
+    prompt: "Enter passphrase for SSH key"
+    echo: false
+  register: ssh_passphrase
+- name: "Add SSH key to agent"
+  expect:
+    command: "ssh-add {{ dest_key }}"
+    responses:
+      "passphrase": "{{ ssh_passphrase.user_input }}"
