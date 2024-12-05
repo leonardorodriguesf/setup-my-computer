@@ -1,0 +1,7 @@
+- name: "Install Ubuntu tools"
+  hosts: "localhost"
+  vars:
+    source_key: "../ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  tasks:
+    - import_tasks: "tasks/ubuntu/gui/1password.yaml"

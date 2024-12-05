@@ -9,7 +9,13 @@ else
   SUDO="sudo"
 fi
 
-$SUDO apt update -y
-$SUDO apt install software-properties-common
-$SUDO add-apt-repository --yes --update ppa:ansible/ansible
-$SUDO apt install ansible
+if command -v ansible > /dev/null; then
+  echo "ansible already installed." 
+else
+  $SUDO apt update -y
+  $SUDO apt install software-properties-common
+  $SUDO add-apt-repository --yes --update ppa:ansible/ansible
+  $SUDO apt install ansible
+fi
+
+ansible-playbook ubuntu.yaml --tags 1password
