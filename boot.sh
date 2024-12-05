@@ -3,6 +3,7 @@
 set -e
 
 dependencies=("git" "python3")
+start_new_session=false
 
 function detect_linux_distro() {
   if [ ! -f /etc/os-release ]; then
@@ -27,9 +28,9 @@ function detect_linux_distro() {
 function clone_setup_repo() {
   echo "Cloning setup-my-computer..."
   setup_folder="$HOME/.local/share/setup-my-computer"
-  current_dir="$(pwd)"
+  old_dir="$(pwd)"
 
-  if [ "$current_dir" = "$setup_folder" ]; then
+  if [ "$old_dir" = "$setup_folder" ]; then
     cd ~
   fi
 
@@ -37,16 +38,18 @@ function clone_setup_repo() {
 
   git clone https://github.com/leonardorodriguesf/setup-my-computer.git "$setup_folder"
 
-  cd "$current_dir"
+  cd "$old_dir"
 }
 
 function install_macos() {
-  if command -v brew > /dev/null; then
+  sudo echo "Starting macOS installation..."
+
+  if [ -f /opt/homebrew/bin/brew ]; then
     echo "Homebrew is already installed."
-  elif [ -f /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
   else
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+    start_new_session=true
   fi
 
   for dependency in "${dependencies[@]}"; do
@@ -103,3 +106,6 @@ case "${platform}" in
     exit 1
 esac
 
+if [ "$start_new_session" = true ]; then
+  exec $SHELL
+fi
