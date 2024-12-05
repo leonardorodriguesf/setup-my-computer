@@ -4,4 +4,4 @@
     source_key: "../ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
-    - import_tasks: "tasks/macos/gui/1password.yaml"
+    - import_tasks: "tasks/gui/macos/1password.yaml"
