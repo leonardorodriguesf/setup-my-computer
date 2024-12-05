@@ -8,4 +8,4 @@ else
   brew install ansible
 fi
 
-ansible-playbook -t 1password macos.yaml
+ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --tags 1password

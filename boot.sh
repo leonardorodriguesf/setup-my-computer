@@ -2,9 +2,10 @@
 
 set -e
 
+export SETUP_FOLDER="$HOME/.local/share/setup-my-computer"
+
 dependencies=("git")
 start_new_session=false
-setup_folder="$HOME/.local/share/setup-my-computer"
 
 function detect_linux_distro() {
   if [ ! -f /etc/os-release ]; then
@@ -30,13 +31,13 @@ function clone_setup_repo() {
   echo "Cloning setup-my-computer..."
   old_dir="$(pwd)"
 
-  if [ "$old_dir" = "$setup_folder" ]; then
+  if [ "$old_dir" = "$SETUP_FOLDER" ]; then
     cd ~
   fi
 
-  rm -rf "$setup_folder"
+  rm -rf "$SETUP_FOLDER"
 
-  git clone https://github.com/leonardorodriguesf/setup-my-computer.git "$setup_folder"
+  git clone https://github.com/leonardorodriguesf/setup-my-computer.git "$SETUP_FOLDER"
 
   cd "$old_dir"
 }
@@ -63,7 +64,7 @@ function install_macos() {
 
   clone_setup_repo
 
-  source "$setup_folder/install/macos.sh"
+  source "$SETUP_FOLDER/install/macos.sh"
 }
 
 function install_ubuntu() { 
@@ -86,7 +87,7 @@ function install_ubuntu() {
 
   clone_setup_repo
 
-  source "$setup_folder/install/ubuntu.sh"
+  source "$SETUP_FOLDER/install/ubuntu.sh"
 }
 
 echo "Checking platform..."

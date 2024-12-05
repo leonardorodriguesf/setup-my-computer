@@ -18,4 +18,5 @@ else
   $SUDO apt install ansible
 fi
 
-ansible-playbook ubuntu.yaml --tags 1password
+
+ansible-playbook "$SETUP_FOLDER/install/ubuntu.yaml" --tags 1password
