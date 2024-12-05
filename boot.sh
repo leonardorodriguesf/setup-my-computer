@@ -4,6 +4,7 @@ set -e
 
 dependencies=("git")
 start_new_session=false
+setup_folder="$HOME/.local/share/setup-my-computer"
 
 function detect_linux_distro() {
   if [ ! -f /etc/os-release ]; then
@@ -27,7 +28,6 @@ function detect_linux_distro() {
 
 function clone_setup_repo() {
   echo "Cloning setup-my-computer..."
-  setup_folder="$HOME/.local/share/setup-my-computer"
   old_dir="$(pwd)"
 
   if [ "$old_dir" = "$setup_folder" ]; then
@@ -62,6 +62,8 @@ function install_macos() {
   done
 
   clone_setup_repo
+
+  source "$setup_folder/install/macos.sh"
 }
 
 function install_ubuntu() { 
@@ -83,6 +85,8 @@ function install_ubuntu() {
   done
 
   clone_setup_repo
+
+  source "$setup_folder/install/ubuntu.sh"
 }
 
 echo "Checking platform..."
