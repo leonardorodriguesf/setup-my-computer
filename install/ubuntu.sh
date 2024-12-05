@@ -20,3 +20,4 @@ fi
 
 
 ansible-playbook "$SETUP_FOLDER/install/ubuntu.yaml" --tags 1password
+ansible-playbook "$SETUP_FOLDER/install/ubuntu.yaml" --ask-vault-password
