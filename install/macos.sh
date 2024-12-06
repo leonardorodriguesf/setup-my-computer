@@ -9,4 +9,4 @@ else
 fi
 
 ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --tags 1password
-ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --ask-vault-password
+ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --skip-tags 1password --ask-vault-password
