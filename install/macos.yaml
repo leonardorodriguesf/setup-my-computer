@@ -4,11 +4,11 @@
     source_key: "../ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
-    - import_tasks: "tasks/terminal/common/ssh.yaml"
-    - import_tasks: "tasks/terminal/macos/ssh.yaml"
-    - import_tasks: "tasks/terminal/common/secrets.yaml"
-    - import_tasks: "tasks/terminal/macos/neovim.yaml"
-    - import_tasks: "tasks/terminal/macos/utils.yaml"
+    - import_tasks: "terminal/common/ssh.yaml"
+    - import_tasks: "terminal/macos/ssh.yaml"
+    - import_tasks: "terminal/common/secrets.yaml"
+    - import_tasks: "terminal/macos/neovim.yaml"
+    - import_tasks: "terminal/macos/utils.yaml"
 
-    - import_tasks: "tasks/gui/macos/1password.yaml"
-    - import_tasks: "tasks/gui/macos/alacritty.yaml"
+    - import_tasks: "gui/macos/1password.yaml"
+    - import_tasks: "gui/macos/alacritty.yaml"
