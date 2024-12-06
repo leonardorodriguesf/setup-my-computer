@@ -7,3 +7,4 @@
     - import_tasks: "tasks/gui/macos/1password.yaml"
     - import_tasks: "tasks/terminal/common/ssh.yaml"
     - import_tasks: "tasks/terminal/macos/ssh.yaml"
+    - import_tasks: "tasks/terminal/common/secrets.yaml"

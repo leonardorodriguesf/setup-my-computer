@@ -6,3 +6,4 @@
   tasks:
     - import_tasks: "tasks/gui/ubuntu/1password.yaml"
     - import_tasks: "tasks/terminal/common/ssh.yaml"
+    - import_tasks: "tasks/terminal/common/secrets.yaml"
