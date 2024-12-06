@@ -1,0 +1,10 @@
+- name: "Install Visual Studio Code"
+  when: ansible_os_family == "Darwin"
+  block:
+    - name: "Check if Visual Studio Code is installed"
+      command: "which code"
+      register: vscode_installed
+      failed_when: false
+    - name: "Install Visual Studio Code"
+      when: vscode_installed.rc != 0
+      shell: "brew install --cask visual-studio-code"
