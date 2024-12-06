@@ -1,0 +1,26 @@
+- name: "Install macOS utils"
+  when: ansible_os_family == "Darwin"
+  block:
+    - name: "Check if ripgrep is installed"
+      command: "which rg"
+      register: ripgrep_installed
+      failed_when: false
+    - name: "Install ripgrep"
+      when: ripgrep_installed.rc != 0
+      shell: "brew install ripgrep"
+
+    - name: "Check if fzf is installed"
+      command: "which fzf"
+      register: fzf_installed
+      failed_when: false
+    - name: "Install fzf"
+      when: fzf_installed.rc != 0
+      shell: "brew install fzf"
+
+    - name: "Check if tldr is installed"
+      command: "which tldr"
+      register: tldr_installed
+      failed_when: false
+    - name: "Install tldr"
+      when: tldr_installed.rc != 0
+      shell: "brew install tlrc"

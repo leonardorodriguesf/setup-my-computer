@@ -1,0 +1,10 @@
+- name: "Install macOS neovim"
+  when: ansible_os_family == "Darwin"
+  block:
+    - name: "Check if neovim is installed"
+      command: "which nvim"
+      register: neovim_installed
+      failed_when: false
+    - name: "Install neovim"
+      when: neovim_installed.rc != 0
+      shell: "brew install neovim"
