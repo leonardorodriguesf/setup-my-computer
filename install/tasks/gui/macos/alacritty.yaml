@@ -2,14 +2,9 @@
   when: ansible_os_family == "Darwin"
   block:
     - name: "Check if Alacritty is installed"
-      command: "[ -d /Applications/Alacritty.app ]"
+      command: "which alacritty"
       register: alacritty_installed
       failed_when: false
     - name: "Install Alacritty desktop"
       when: alacritty_installed.rc != 0
-      shell: |
-        cd /tmp
-        curl -O https://github.com/alacritty/alacritty/releases/download/v0.14.0/Alacritty-v0.14.0.dmg
-        hdiutil attach Alacritty-v0.14.0.dmg
-        cp -r /Volumes/Alacritty/Alacritty.app /Applications
-        hdiutil detach /Volumes/Alacritty
+      shell: brew install --cask alacritty
