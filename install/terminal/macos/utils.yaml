@@ -1,6 +1,15 @@
 - name: "Install macOS utils"
   when: ansible_os_family == "Darwin"
   block:
+    - name: "Check if tmux is installed"
+      command: "which tmux"
+      register: tmux_installed
+      failed_when: false
+
+    - name: "Install tmux"
+      when: tmux_installed.rc != 0
+      shell: "brew install tmux"
+
     - name: "Check if ripgrep is installed"
       command: "which rg"
       register: ripgrep_installed
