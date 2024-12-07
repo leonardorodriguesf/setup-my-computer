@@ -28,18 +28,15 @@ function detect_linux_distro() {
 }
 
 function clone_setup_repo() {
-  echo "Cloning setup-my-computer..."
-  old_dir="$(pwd)"
+  cd ~
 
-  if [ "$old_dir" = "$SETUP_FOLDER" ]; then
-    cd ~
-  fi
+  echo "Cloning setup-my-computer..."
 
   rm -rf "$SETUP_FOLDER"
 
   git clone https://github.com/leonardorodriguesf/setup-my-computer.git "$SETUP_FOLDER"
 
-  cd "$old_dir"
+  cd -
 }
 
 function install_macos() {
