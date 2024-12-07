@@ -1,0 +1,14 @@
+- name: "Install macOS dotfiles"
+  tags: dotfiles
+  when: ansible_os_family == "Darwin"
+  block:
+    - name: "Check if Python3 is installed"
+      command: "which python3"
+      register: python3_installed
+      failed_when: false
+    - name: "Install Python3"
+      when: python3_installed.rc != 0
+      shell: "brew install python3"
+    - name: "Call dotbot installation"
+      debug:
+        msg: "Installing dotfiles"

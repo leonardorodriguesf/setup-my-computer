@@ -1,0 +1,50 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- link:
+    ~/personal/setup-my-computer:
+      path: ..
+      force: true
+      create: true
+
+    ~/.config/shell:
+      create: true
+      path: shell
+
+    ~/.local/bin:
+      create: true
+      path: bin
+
+    ~/.config/zsh:
+      create: true
+      path: zsh
+
+    ~/.zshrc:
+      force: true
+      path: zsh/zshrc
+
+    # ~/.shell: shell
+    # ~/.bash: bash
+    # ~/.bashrc:
+    #   path: bash/bashrc
+    #   force: true
+    # ~/.bash_profile:
+    #   path: bash/bash_profile
+    #   force: true
+    # ~/.gitconfig: git/gitconfig
+    # ~/.gitignore_global: git/gitignore_global
+    # ~/.vim: vim
+    # ~/.tmux.conf: tmux/tmux.conf
+    # ~/.asdf:
+    #   path: asdf
+    #   force: true
+
+- create:
+    - ~/personal
+    - ~/work
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
