@@ -10,6 +10,18 @@
       force: true
       create: true
 
+    ~/.gitconfig:
+      path: git/gitconfig
+      force: true
+
+    ~/.gitignore_global:
+      path: git/gitignore_global
+      force: true
+
+    ~/.gitconfig_work:
+      path: git/gitconfig_work
+      force: true
+
     ~/.config/shell:
       create: true
       path: shell
@@ -17,6 +29,7 @@
     ~/.local/bin:
       create: true
       path: bin
+      force: true
 
     ~/.config/zsh:
       create: true

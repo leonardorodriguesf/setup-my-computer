@@ -1,0 +1,32 @@
+[user]
+  name = Leonardo Rodrigues Ferreira
+  email = leo.rf.developer@gmail.com
+
+[alias]
+  g = log --all --graph --oneline
+  s = status --short
+  d = difftool
+  ds = difftool --staged
+  c = commit --verbose
+  ca = commit --verbose --all 
+  l = log --patch --stat
+  unstage = restore --staged --
+  discard = restore --
+  last = log --patch --stat -1 HEAD
+  originpush = ! "git push -u origin $(git branch --show-current)"
+  
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+
+[merge]
+  tool = vimdiff
+
+[diff]
+  tool = vimdiff
+
+[difftool]
+  prompt = false
+
+[includeIf "gitdir:~/work/**/.git"]
+  path = ~/.gitconfig_work
