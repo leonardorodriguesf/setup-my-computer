@@ -16,3 +16,4 @@
     - import_tasks: "gui/macos/1password.yaml"
     - import_tasks: "gui/macos/alacritty.yaml"
     - import_tasks: "gui/macos/vscode.yaml"
+    - import_tasks: "gui/macos/fonts.yaml"

@@ -1,0 +1,16 @@
+- name: "Install macOS fonts"
+  when: ansible_os_family == "Darwin"
+  tags: fonts
+  block:
+    - name: "Check if MesloLG Fonts is installed"
+      command: test -n "$(find ~/Library/Fonts -maxdepth 1 -name 'Meslo*')"
+      register: mesloLG_installed
+      failed_when: false
+    - name: "Install MesloLG Fonts"
+      when: mesloLG_installed.rc != 0
+      shell: |
+        cd /tmp
+        curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.zip
+        unzip Meslo.zip -d Meslo
+        cp Meslo/*.ttf ~/Library/Fonts
+        rm -rf Meslo.zip Meslo
