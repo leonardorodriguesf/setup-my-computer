@@ -17,7 +17,7 @@
   
 [core]
   editor = vim
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.config/git/gitignore_global
 
 [merge]
   tool = vimdiff
@@ -29,4 +29,4 @@
   prompt = false
 
 [includeIf "gitdir:~/work/**/.git"]
-  path = ~/.gitconfig_work
+  path = ~/.config/git/gitconfig_work

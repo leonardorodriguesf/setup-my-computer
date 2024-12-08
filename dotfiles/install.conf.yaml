@@ -10,16 +10,12 @@
       force: true
       create: true
 
+    ~/.config/git:
+      create: true
+      path: git
+
     ~/.gitconfig:
       path: git/gitconfig
-      force: true
-
-    ~/.gitignore_global:
-      path: git/gitignore_global
-      force: true
-
-    ~/.gitconfig_work:
-      path: git/gitconfig_work
       force: true
 
     ~/.config/shell:
