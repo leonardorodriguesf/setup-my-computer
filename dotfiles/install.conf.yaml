@@ -39,6 +39,10 @@
       force: true
       path: zsh/zprofile
 
+    ~/.config/alacritty:
+      create: true
+      path: alacritty
+
     # ~/.shell: shell
     # ~/.bash: bash
     # ~/.bashrc:
