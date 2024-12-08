@@ -1,0 +1,7 @@
+- name: "Check if pnpm is installed"
+  command: "which pnpm"
+  register: pnpm_installed
+  failed_when: false
+- name: "Install pnpm"
+  when: pnpm_installed.rc != 0
+  shell: "curl -fsSL https://get.pnpm.io/install.sh | sh -"

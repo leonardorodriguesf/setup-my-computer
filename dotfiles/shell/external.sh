@@ -5,3 +5,4 @@ export XDG_STATE_HOME=$HOME/.local/state
 export USER_BIN_HOME=$HOME/.local/bin
 
 export EDITOR=vim
+export TERM='xterm-256color'

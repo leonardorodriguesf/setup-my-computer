@@ -12,6 +12,8 @@
     - import_tasks: "terminal/macos/utils.yaml"
     - import_tasks: "terminal/macos/dotfiles.yaml"
     - import_tasks: "terminal/common/oh-my-zsh.yaml"
+    - import_tasks: "terminal/common/asdf.yaml"
+    - import_tasks: "terminal/common/pnpm.yaml"
 
     - import_tasks: "gui/macos/1password.yaml"
     - import_tasks: "gui/macos/alacritty.yaml"

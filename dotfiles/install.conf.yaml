@@ -12,6 +12,7 @@
 
     ~/.config/git:
       create: true
+      force: true
       path: git
 
     ~/.gitconfig:
@@ -20,6 +21,7 @@
 
     ~/.config/shell:
       create: true
+      force: true
       path: shell
 
     ~/.local/bin:
@@ -29,6 +31,7 @@
 
     ~/.config/zsh:
       create: true
+      force: true
       path: zsh
 
     ~/.zshrc:
@@ -41,23 +44,22 @@
 
     ~/.config/alacritty:
       create: true
+      force: true
       path: alacritty
 
-    # ~/.shell: shell
-    # ~/.bash: bash
-    # ~/.bashrc:
-    #   path: bash/bashrc
-    #   force: true
-    # ~/.bash_profile:
-    #   path: bash/bash_profile
-    #   force: true
-    # ~/.gitconfig: git/gitconfig
-    # ~/.gitignore_global: git/gitignore_global
-    # ~/.vim: vim
-    # ~/.tmux.conf: tmux/tmux.conf
-    # ~/.asdf:
-    #   path: asdf
-    #   force: true
+    ~/.config/tmux:
+      create: true
+      force: true
+      path: tmux
+
+    ~/.tmux.conf:
+      force: true
+      path: tmux/tmux.conf
+
+    ~/.config/nvim:
+      force: true
+      create: true
+      path: nvim
 
 - create:
     ~/personal:

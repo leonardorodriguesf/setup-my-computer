@@ -1,0 +1,17 @@
+- name: "Check if asdf is installed"
+  shell: "test -d ~/.asdf || test -d ~/.config/asdf"
+  register: asdf_installed
+  failed_when: false
+
+- name: "Install asdf"
+  shell: git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.14.1
+  when: asdf_installed.rc != 0
+
+- name: "Initilize asdf in current session"
+  shell: . ~/.config/asdf/asdf.sh
+
+- name: "Install nodejs"
+  shell: |
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    asdf install nodejs latest
+    asdf global nodejs latest
