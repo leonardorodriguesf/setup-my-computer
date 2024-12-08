@@ -15,3 +15,5 @@ ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --tags dotfiles
 source "$SETUP_FOLDER/dotfiles/install"
 
 ansible-playbook "$SETUP_FOLDER/install/macos.yaml" --skip-tags 1password,ssh,secrets,dotfiles
+
+exec $SHELL

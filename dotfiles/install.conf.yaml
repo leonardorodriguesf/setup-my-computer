@@ -39,6 +39,10 @@
       force: true
       path: zsh/zshrc
 
+    ~/.zprofile:
+      force: true
+      path: zsh/zprofile
+
     # ~/.shell: shell
     # ~/.bash: bash
     # ~/.bashrc:
@@ -56,8 +60,10 @@
     #   force: true
 
 - create:
-    - ~/personal
-    - ~/work
+    ~/personal:
+      mode: 0700
+    ~/work:
+      mode: 0700
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -1,0 +1,20 @@
+- name: "Go"
+  tags: debug
+  block:
+    - name: "Check if oh-my-zsh is installed"
+      shell: "test -d ~/.oh-my-zsh || test -d ~/.config/oh-my-zsh"
+      register: ohmyzsh_installed
+      failed_when: false
+
+    - name: "Install oh-my-zsh"
+      shell: ZSH=~/.config/oh-my-zsh KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      when: ohmyzsh_installed.rc != 0
+
+    - name: "Check if zsh auto-suggestions plugin is installed"
+      shell: test -d ~/.config/oh-my-zsh/plugins/zsh-autosuggestions
+      register: zsh_autosuggestions_installed
+      failed_when: false
+
+    - name: "Install zsh auto-suggestions plugin"
+      shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/oh-my-zsh/plugins/zsh-autosuggestions
+      when: zsh_autosuggestions_installed.rc != 0
